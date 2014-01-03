@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ $1 = "new" ]; then
+    if [ -n $2 ]; then
+        java -jar $JEDI_HOME/bin/jedi-admin.jar new $2
+        cp -R $JEDI_HOME/lib/* $PWD/$2/web/WEB-INF/lib
+    fi
+elif [ $1 = "g" ] || [ $1 = "generate" ]; then
+    if [ $2 = "model" ]; then
+        java -jar $JEDI_HOME/bin/jedi-admin.jar generate model $3
+    elif [ $2 = "controller" ]; then
+        if [ -z $4 ]; then
+            java -jar $JEDI_HOME/bin/jedi-admin.jar generate controller $3
+    	else
+            java -jar $JEDI_HOME/bin/jedi-admin.jar generate controller $3 $4
+        fi
+    elif [ $2 = "scaffold" ]; then
+        java -jar $JEDI_HOME/bin/jedi-admin.jar generate scaffold $3
+    fi
+elif [ $1 = "-v" ] || [ $1 = "--version" ]; then
+    java -jar $JEDI_HOME/bin/jedi-admin.jar $1
+elif [ $1 = "s" ] || [ $1 = "server" ]; then
+    javac -Xlint:unchecked -cp .:$PWD/web/WEB-INF/src:$PWD/web/WEB-INF/lib/* -d $PWD/web/WEB-INF/classes $(find ./* | grep .java$)
+    # --prefix=/${PWD##*/}
+    java -jar $PWD/web/WEB-INF/lib/winstone.jar --useJasper=true --useServletReloading=true --useSavedSessions=true --directoryListings=false --webroot=$PWD/web --commonLibFolder=$PWD/web/WEB-INF/lib
+elif [ $1 = "gsgen" ]; then
+    javac -Xlint:unchecked -cp "$PWD/web/WEB-INF/lib/*" -d $PWD/web/WEB-INF/classes $(find ./* | grep .*.java$)
+    # Ao usar java -jar a opcao -cp e desconsiderada.
+    java -cp $PWD/web/WEB-INF/classes:"$PWD/web/WEB-INF/lib/*" JediGSGen $PWD/web/WEB-INF
+elif [ $1 = "syncdb" ]; then
+    javac -Xlint:unchecked -cp "$PWD/web/WEB-INF/lib/*" -d $PWD/web/WEB-INF/classes $(find ./* | grep .*.java$)
+    java -cp $PWD/web/WEB-INF/classes:"$PWD/web/WEB-INF/lib/*" JediORM $PWD/web/WEB-INF
+fi
