@@ -6,12 +6,14 @@ What is Jedi?
 #
 **Jedi** is a ***Micro Web MVC Framework*** written in Java.
 
-Exemplo de criação para projeto de livraria
+1 Creating a project
 -------------------------------------------
 #
-Comando: django new livraria
+**1.1 Command-line**
 
-Estrutura:
+    django new notebook
+
+**1.2 Project's directory structure**:
 #
     notebook
     └── web
@@ -37,7 +39,6 @@ Estrutura:
             │   ├── jedi-forms.jar
             │   ├── jedi-gsgen.jar
             │   ├── jedi-orm.jar
-            │   ├── jedi-orm-old.jar
             │   ├── jedi-serializers.jar
             │   ├── jedi-template.jar
             │   ├── jsp-api.jar
@@ -98,7 +99,12 @@ tmp - diretório de arquivos temporários.
 
 
 Embed Servlet Container
+-----------------------
+#
+**1.1 Winstone**
 
-java -jar winstone.jar --webroot=/home/neo/Projetos/java/DjangoAdmin/livraria
+    java -jar winstone.jar --webroot=/home/neo/Projetos/java/DjangoAdmin/livraria
 
-java -jar jetty-runner.jar --lib ./livraria/lib --classes ./livraria/tmp --path livraria livraria/public --config jetty.xml
+**1.2 Jetty**
+
+    java -jar jetty-runner.jar --lib ./livraria/lib --classes ./livraria/tmp --path livraria livraria/public --config jetty.xml
