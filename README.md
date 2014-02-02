@@ -1,35 +1,66 @@
-jedi
-====
+Jedi - Micro Web MVC Framework
+==============================
 
-Java Mini MVC Framework
+What is Jedi?
+-------------
+#
+**Jedi** is a ***Micro Web MVC Framework*** written in Java.
 
-Exemplo de criação para projeto de livraria.
-
+Exemplo de criação para projeto de livraria
+-------------------------------------------
+#
 Comando: django new livraria
 
 Estrutura:
+#
+    notebook
+    └── web
+        ├── pages
+        │   └── index.jsp
+        ├── static
+        │   ├── css
+        │   ├── images
+        │   └── js
+        └── WEB-INF
+            ├── classes
+            ├── config
+            │   ├── database.properties
+            │   ├── inflections.properties
+            │   └── locales
+            ├── db
+            ├── lib
+            │   ├── el-api.jar
+            │   ├── jangod-template.jar
+            │   ├── jasper-el.jar
+            │   ├── jasper.jar
+            │   ├── jasper-jdt.jar
+            │   ├── jedi-forms.jar
+            │   ├── jedi-gsgen.jar
+            │   ├── jedi-orm.jar
+            │   ├── jedi-orm-old.jar
+            │   ├── jedi-serializers.jar
+            │   ├── jedi-template.jar
+            │   ├── jsp-api.jar
+            │   ├── jstl.jar
+            │   ├── mysql-connector-java-5.1.12-bin.jar
+            │   ├── servlet-api.jar
+            │   ├── standard.jar
+            │   ├── tomcat-coyote.jar
+            │   ├── tomcat-juli.jar
+            │   └── winstone.jar
+            ├── log
+            ├── src
+            │   ├── controllers
+            │   │   └── NotebookController.java
+            │   ├── models
+            │   └── views
+            │       ├── base.html
+            │       └── notebook
+            │           └── index.html
+            └── web.xml
+    18 directories, 26 files
 
-livraria
---------- app
---------------assets
------------------------images
------------------------javascripts
------------------------stylesheets
-----------controllers
-----------models
-----------views
-config
---------settings.properties
-doc
-lib
-log
-public
-test
-tmp
-
-Essa é a estrutura gerada pela ferramenta.
-
-livraria - diretório do projeto
+notebook - diretório do projeto
 
 app - diretório da aplicação
 
